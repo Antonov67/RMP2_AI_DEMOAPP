@@ -3,6 +3,7 @@ package com.example.rmp2_ai_demoapp.ui;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup genderGroup;
     private TextView resultText;
     private Button sendButton;
+    private Spinner zodiacSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
         genderGroup = findViewById(R.id.genderGroup);
         resultText = findViewById(R.id.resultText);
         sendButton = findViewById(R.id.sendButton);
+        zodiacSpinner = findViewById(R.id.zodiacSpinner);
     }
 }
