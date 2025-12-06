@@ -14,6 +14,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rmp2_ai_demoapp.R;
+import com.example.rmp2_ai_demoapp.network.callback.SimpleDataCallback;
+import com.example.rmp2_ai_demoapp.service.AiService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView resultText;
     private Button sendButton;
     private Spinner zodiacSpinner;
+    private final AiService aiService = new AiService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 String gender = ((RadioButton) findViewById(selectedId)).getText().toString();
                 String zodiac = zodiacSpinner.getSelectedItem().toString();
 
-                resultText.setText("\uD83D\uDCAD Думаю над подарком...");
+                resultText.setText("\uD83D\uDCAD Думаю над гороскопом...");
 
                 sendRequestToAi(gender, zodiac);
             }
@@ -54,7 +57,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendRequestToAi(String gender, String zodiac){
-
+        aiService.getHoroscope(gender, zodiac, new SimpleDataCallback<String>() {
+            @Override
+            public void onLoad(String data) {
+                resultText.setText(data);
+            }
+        });
     }
 
     private void initZodiacSpinner() {

@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 public interface Api {
     @Headers({
             "Content-Type: application/json",
-            "Authorization: Bearer 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"
+            "Authorization: Bearer "
     })
     @POST("chat/completions")
     Call<OpenRouterResponse> sendMessage(@Body OpenRouterRequest request);

@@ -4,8 +4,12 @@ public class Message {
     String role;
     String content;
 
-    public Message(String role, String content) {
-        this.role = role;
+    public Message(String content) {
+        this.role = "user";
         this.content = content;
+    }
+
+    public String getContent() {
+        return content;
     }
 }
